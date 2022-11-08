@@ -52,34 +52,37 @@ export default {
 @import "../assets/scss/mixing";
 
 section {
-  background-color: rgb(21, 29, 196);
+  background-color: rgb(73, 119, 203);
 
   main {
     @include container;
-    padding: 100px 15px;
 
     ul {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       padding: 0;
+      margin: 0;
 
       li {
+        flex-basis: 0;
+        flex-grow: 1;
         display: flex;
-        justify-content: space-between;
+        gap: 15px;
         align-items: center;
-        gap: 10px;
 
         a {
           font-size: 12px;
           font-weight: 600;
           color: white;
+          text-decoration: none;
         }
       }
     }
 
     img {
-      width: 40px;
+      height: 56px;
     }
   }
 }

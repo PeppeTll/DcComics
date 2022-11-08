@@ -5,8 +5,8 @@
         </figure>
         <nav>
             <ul>
-                <li v-for="(link, i) in navList" :key="i">
-                    <a :class="i == index ? 'active': ''" :href="link.href" @click="changeIndex(i)">{{link.nome}}</a>
+                <li v-for="(link, i) in navList" :key="i" :class="i == index ? 'active': ''" @click="changeIndex(i)">
+                    <a  :href="link.href" >{{link.nome}}</a>
                 </li>
             </ul>
         </nav>
@@ -62,44 +62,66 @@ export default {
         },
       ],
       index: 0,
-      changeIndex: ( i ) => {
-        this.index = i
-      }
+      changeIndex: (i) => {
+        this.index = i;
+      },
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/mixing';
+
 header {
-  padding: 10px;
-  margin: 0 auto;
-  width: 1024px;
+  @include container;
+  padding: 0;
   display: flex;
   justify-content: space-between;
+  min-height: 118px;
+
+  figure {
+    align-self: center;
+    margin: 0;
+  }
 
   nav {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
 
     ul {
       list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
+      display: contents;
+      margin: 0;
 
-      a {
-        color: black;
-        font-weight: 600;
-        text-decoration: none;
+      li {
+        a {
+          color: currentColor;
+          font-weight: 600;
+          text-decoration: none;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          position: relative;
+        }
 
-        &.active {
-          color: rgb(50, 81, 168)
+        &.active, &:hover {
+          color: rgb(73, 119, 203);
+
+          a::after {
+            content: '';
+            display: block;
+            height: 4px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgb(73, 119, 203);
+            }
+          }
         }
       }
     }
   }
-}
 </style>

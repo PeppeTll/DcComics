@@ -34,12 +34,12 @@ export default {
   box-sizing: border-box;
 }
 
-li {
+ul {
   list-style: none;
 }
 
 a {
   text-decoration: none;
-  color: initial
+  color: currentColor
 }
 </style>
